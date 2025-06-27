@@ -1,3 +1,5 @@
+package ShapeAbstraction;
+
 import java.util.*;
 
 
@@ -11,8 +13,8 @@ public class ShapeCalculator {
         Shape rectangle = new Rectangle(10,5,isSquare);
 
         /*
-        Old code - if we are using default Rectangle constructor without sending length and width
-        Shape rectangle = new Rectangle();
+        Old code - if we are using default ShapeAbstraction.Rectangle constructor without sending length and width
+        ShapeAbstraction.Shape rectangle = new ShapeAbstraction.Rectangle();
         double rectangleSingleValue = 10;
         //if isSquare is false then these fields will be considered for rectangle
         double rectangleLength = 10;
@@ -29,10 +31,10 @@ public class ShapeCalculator {
             System.out.println(shape.toString());
 
             /*
-            Old code - if we are using default Rectangle constructor without sending length and width
-            if(shape instanceof Rectangle)
+            Old code - if we are using default ShapeAbstraction.Rectangle constructor without sending length and width
+            if(shape instanceof ShapeAbstraction.Rectangle)
             {
-                //Compile time polymorphism example for Rectangle
+                //Compile time polymorphism example for ShapeAbstraction.Rectangle
                 if(isSquare) {
                     System.out.println("length = " +rectangleSingleValue+ " width = "+rectangleSingleValue);
                     shape.setDimensions(rectangleSingleValue);

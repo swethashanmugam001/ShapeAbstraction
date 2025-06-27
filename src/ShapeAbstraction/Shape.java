@@ -1,4 +1,6 @@
- public abstract class Shape {
+package ShapeAbstraction;
+
+public abstract class Shape {
 
    abstract double calculateArea();
 
