@@ -1,4 +1,4 @@
-package LaptopOOPExample;
+package com.oops.example.laptop;
 
 public class User {
 

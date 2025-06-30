@@ -1,4 +1,4 @@
-package ArithmeticExceptionExample;
+package com.custom.exception;
 
 public class Calculator {
 
@@ -21,6 +21,6 @@ public class Calculator {
         else if (currentVal == 0)
             throw new MyArithException("Zero not allowed");
 
-        return (double)currentVal;
+        return (double) currentVal;
     }
 }

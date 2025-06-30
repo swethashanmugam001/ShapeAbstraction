@@ -1,6 +1,6 @@
-package LaptopOOPExample;
+package com.oops.example.laptop;
 
-public class HDD {
+public class Hdd {
 
     private String size;
     private int type;

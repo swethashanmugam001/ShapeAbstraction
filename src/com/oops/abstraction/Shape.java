@@ -1,0 +1,9 @@
+package com.oops.abstraction;
+
+public abstract class Shape {
+
+    abstract double calculateArea();
+
+    abstract double calculatePerimeter();
+
+}

@@ -1,4 +1,4 @@
-package ArithmeticExceptionExample;
+package com.custom.exception;
 
 public class MyArithException extends RuntimeException {
 

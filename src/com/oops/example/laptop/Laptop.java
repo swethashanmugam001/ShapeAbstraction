@@ -1,15 +1,15 @@
-package LaptopOOPExample;
+package com.oops.example.laptop;
 
 public class Laptop {
 
     public static final String logo = "MAC";
 
-    Processor processor;
-    RAM ram;
-    HDD hdd;
-    User user;
+    private final Processor processor;
+    private final RAM ram;
+    private final Hdd hdd;
+    private final User user;
 
-    Laptop(Processor processor, RAM ram, HDD hdd, User user)
+    public Laptop(Processor processor, RAM ram, Hdd hdd, User user)
     {
         this.processor = processor;
         this.ram =  ram;

@@ -1,16 +1,18 @@
-package LaptopOOPExample;
+package com.oops.example.laptop;
 
-public class Main {
+/* Association between classes */
+
+public class LaptopApp {
     public static void main(String[] args) {
 
         Processor processor1 = new Processor();
         RAM ram1 = new RAM();
-        HDD hdd1 = new HDD();
+        Hdd hdd1 = new Hdd();
         User user1 = new User();
 
         Processor processor2 = new Processor();
         RAM ram2 = new RAM();
-        HDD hdd2 = new HDD();
+        Hdd hdd2 = new Hdd();
         User user2 = new User();
 
         //user 1 details
