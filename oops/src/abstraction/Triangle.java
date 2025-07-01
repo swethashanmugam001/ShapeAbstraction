@@ -1,4 +1,4 @@
-package com.oops.abstraction;
+package abstraction;
 
 public class Triangle extends Shape {
 

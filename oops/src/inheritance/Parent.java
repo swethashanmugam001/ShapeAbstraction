@@ -1,4 +1,4 @@
-package com.oops.inheritance;
+package inheritance;
 
 
 class Parent extends GrandParent {

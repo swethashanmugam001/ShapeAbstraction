@@ -1,4 +1,4 @@
-package com.oops.abstraction;
+package abstraction;
 
 import java.util.*;
 

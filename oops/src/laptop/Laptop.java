@@ -1,4 +1,4 @@
-package com.oops.example.laptop;
+package laptop;
 
 public class Laptop {
 

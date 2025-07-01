@@ -1,4 +1,4 @@
-package com.oops.inheritance;
+package inheritance;
 
 /* one liner implementation to print multiple statements across multi level parent-child classes*/
 
