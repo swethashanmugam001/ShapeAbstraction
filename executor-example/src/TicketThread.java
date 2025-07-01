@@ -1,4 +1,8 @@
+import java.util.logging.Logger;
+
 class TicketThread implements Runnable {
+
+    private static final Logger LOGGER = Logger.getLogger(TicketThread.class.getName());
 
     int ticketNumber;
 
@@ -7,9 +11,9 @@ class TicketThread implements Runnable {
     }
 
     public void run() {
-        System.out.println("Booking received");
-        System.out.println("Payment processed");
-        System.out.println("Ticket confirmed");
+        LOGGER.info("Booking received");
+        LOGGER.info("Payment processed");
+        LOGGER.info("Ticket confirmed");
     }
 }
 
