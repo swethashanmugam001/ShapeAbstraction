@@ -2,28 +2,44 @@ package laptop;
 
 public class Processor {
 
-    private int size;
-    private String type;
+    private int gigaHertz;
+    private String generation;
 
-    public String getType() {
-        return type;
+    public Processor(int gigaHertz, String generation) {
+        this.gigaHertz = gigaHertz;
+        this.generation = generation;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getGeneration() {
+        return generation;
     }
 
-    public int getSize() {
-        return size;
+    public void setGeneration(String generation) {
+        this.generation = generation;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public int getGigaHertz() {
+        return gigaHertz;
+    }
+
+    public void setGigaHertz(int gigaHertz) {
+        this.gigaHertz = gigaHertz;
     }
 
     @Override
-    public String toString()
-    {
-        return "Processor ["  + "type : " + getType() + " size : " + getSize() + "] ";
+    public String toString() {
+        return "Processor [" + "generation : " + generation + " GHz : " + gigaHertz + "] ";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Processor otherObject)) {
+            return false;
+        }
+        return gigaHertz == otherObject.gigaHertz
+                && generation.equals(otherObject.generation);
     }
 }
