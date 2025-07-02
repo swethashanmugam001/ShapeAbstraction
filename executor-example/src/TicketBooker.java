@@ -8,10 +8,12 @@ public class TicketBooker {
         int numOfThreads = 10;
         int numOfBookings = 5;
 
-        try (ExecutorService pool = Executors.newFixedThreadPool(numOfThreads)) {
-            for (int i = 1; i <= numOfBookings; i++) {
-                pool.execute(new TicketThread(i));
-            }
+        ExecutorService pool = Executors.newFixedThreadPool(numOfThreads);
+
+        for (int i = 1; i <= numOfBookings; i++) {
+            pool.execute(new TicketThread(i));
         }
+
+        pool.shutdown();
     }
 }

@@ -11,9 +11,22 @@ class TicketThread implements Runnable {
     }
 
     public void run() {
-        LOGGER.info("Booking received");
-        LOGGER.info("Payment processed");
-        LOGGER.info("Ticket confirmed");
+        LOGGER.info("Booking received " + ticketNumber);
+        makeThreadSleep(300);
+
+        LOGGER.info("Payment processed " + ticketNumber);
+        makeThreadSleep(300);
+
+        LOGGER.info("Ticket confirmed " + ticketNumber);
+        makeThreadSleep(300);
+    }
+
+    private void makeThreadSleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException ignored) {
+
+        }
     }
 }
 
