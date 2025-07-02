@@ -1,18 +1,22 @@
 package inheritance;
 
+import java.util.logging.Logger;
+
 class Child extends Parent {
 
     String emotion;
     int strictnessLevel;
 
+    private static final Logger LOGGER = Logger.getLogger(Child.class.getName());
+
     Child() {
-        System.out.println("InheritanceExample.Child default constructor....");
+        LOGGER.info("Child default constructor.");
     }
 
     Child(String emotion, int strictnessLevel) {
         super("strict", 100);
 
-        System.out.println("InheritanceExample.Child constructor....Setting values....");
+        LOGGER.info("Child constructor. Setting values....\n");
         this.emotion = emotion;
         this.strictnessLevel = strictnessLevel;
         showLove();
@@ -21,15 +25,15 @@ class Child extends Parent {
     void showLove() {
         super.showLove();
 
-        System.out.println("3) InheritanceExample.Child love...");
-        System.out.println("Children show innocent love");
-        System.out.println("InheritanceExample.Child emotion : " + this.emotion);
-        System.out.println("InheritanceExample.Child strictness level : " + this.strictnessLevel);
-        System.out.println("Overall rating : " + this.overallRating());
+        LOGGER.info("(3) Child love...");
+        LOGGER.info("Children show innocent love");
+        LOGGER.info("Child emotion : " + this.emotion);
+        LOGGER.info("Child strictness level : " + this.strictnessLevel);
+        LOGGER.info("Overall rating : " + this.overallRating() + "\n");
     }
 
     String overallRating() {
-        return "No need to rate Children :)";
+        return "No need to rate Children!";
     }
 
 }

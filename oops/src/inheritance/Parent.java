@@ -1,35 +1,38 @@
 package inheritance;
 
+import java.util.logging.Logger;
 
 class Parent extends GrandParent {
 
     String emotion;
     int strictnessLevel;
 
+    private static final Logger LOGGER = Logger.getLogger(Parent.class.getName());
+
     Parent() {
-        System.out.println("InheritanceExample.Parent default constructor....");
+        LOGGER.info("Parent default constructor.");
     }
 
     Parent(String emotion, int strictnessLevel) {
         super("unconditional love", 0);
-        System.out.println("InheritanceExample.Parent constructor....Setting values....");
+
+        LOGGER.info("Parent constructor. Setting values....");
         this.emotion = emotion;
         this.strictnessLevel = strictnessLevel;
-
     }
 
     void showLove() {
         super.showLove();
-        System.out.println("2) InheritanceExample.Parent love...");
-        System.out.println("Parents show tough love");
-        System.out.println("InheritanceExample.Parent emotion : " + this.emotion);
-        System.out.println("InheritanceExample.Parent strictness level : " + this.strictnessLevel);
-        System.out.println("Overall rating :" + this.overallParentRating());
+
+        LOGGER.info("(2) Parent love...");
+        LOGGER.info("Parents show tough love");
+        LOGGER.info("Parent emotion : " + this.emotion);
+        LOGGER.info("Parent strictness level : " + this.strictnessLevel);
+        LOGGER.info("Overall rating : " + this.overallParentRating() + "\n");
     }
 
     String overallParentRating() {
-        return "four stars only";
+        return "Four Stars Only";
     }
-
 }
 
