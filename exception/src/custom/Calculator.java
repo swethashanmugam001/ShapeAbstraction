@@ -1,4 +1,4 @@
-package exception;
+package custom;
 
 public class Calculator {
 
