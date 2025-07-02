@@ -1,10 +1,12 @@
 package abstraction;
 
 import java.util.*;
-
-/* Abstract class Shape and methods implemented by Circle, Triangle and Rectangle to calculate Area and Perimeter */
+import java.util.logging.Logger;
 
 public class ShapeCalculator {
+
+    private static final Logger LOGGER = Logger.getLogger(ShapeCalculator.class.getName());
+
     public static void main(String[] args) {
 
         boolean isSquare = true;
@@ -20,15 +22,9 @@ public class ShapeCalculator {
         shapeList.add(triangle);
 
         for (Shape shape : shapeList) {
-            System.out.println(shape.toString());
-
-            System.out.println("Area..");
-            System.out.println(shape.calculateArea());
-
-            System.out.println("Perimeter..");
-            System.out.println(shape.calculatePerimeter());
-            System.out.println("\n");
-
+            LOGGER.info(shape.toString());
+            LOGGER.info("Area : " + shape.calculateArea());
+            LOGGER.info("Perimeter : " + shape.calculatePerimeter() + "\n");
         }
     }
 }

@@ -4,7 +4,6 @@ public class Rectangle extends Shape {
 
     private double length;
     private double width;
-    private boolean isSquare;
 
     public Rectangle(double length, double width, boolean isSquare) {
         if (isSquare) {
@@ -34,6 +33,6 @@ public class Rectangle extends Shape {
 
     @Override
     public String toString() {
-        return "Rectangle..." + "length= " + length + " width= " + width;
+        return "Rectangle properties : " + "length= " + length + ", width= " + width;
     }
 }
