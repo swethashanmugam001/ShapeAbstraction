@@ -1,5 +1,7 @@
 package abstraction;
 
+import static java.lang.Math.PI;
+
 public class Circle extends Shape {
 
     private double radius;
@@ -9,11 +11,11 @@ public class Circle extends Shape {
     }
 
     public double calculateArea() {
-        return 3.14 * radius * radius;
+        return PI * radius * radius;
     }
 
     public double calculatePerimeter() {
-        return 2 * 3.14 * radius;
+        return 2 * PI * radius;
     }
 
     @Override
