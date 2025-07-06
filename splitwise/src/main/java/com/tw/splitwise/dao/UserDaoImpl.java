@@ -11,7 +11,7 @@ public class UserDaoImpl implements UserDao {
     private final List<User> users;
 
     public UserDaoImpl() {
-       this.users= FileParser.getAllUsers();
+       this.users = FileParser.getAllUsers();
     }
 
     @Override

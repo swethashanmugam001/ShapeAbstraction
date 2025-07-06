@@ -31,12 +31,16 @@ public class FileParser {
     }
 
     public static void printExpenseSummary(Map<String, Map<String, Double>> expenseSummary) {
+        StringBuilder result = new StringBuilder();
+        result.append("\n");
         for (Map.Entry<String, Map<String, Double>> entry : expenseSummary.entrySet()) {
             Map<String, Double> receiverSummary = entry.getValue();
             for (var receiver : receiverSummary.entrySet()) {
-                System.out.println(receiver.getKey() + " pays " + entry.getKey() + " " + receiver.getValue());
+                result.append(receiver.getKey() + " pays " + entry.getKey() + " " + receiver.getValue());
+                result.append("\n");
             }
         }
+        LOGGER.info(result.toString());
     }
 
     private static List<Expense> parseInputFile() {
