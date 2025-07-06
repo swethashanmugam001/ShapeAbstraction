@@ -1,7 +1,6 @@
 package com.tw.splitwise.service;
 
 import com.tw.splitwise.entity.Expense;
-import com.tw.splitwise.entity.User;
 
 import java.util.Date;
 import java.util.List;
