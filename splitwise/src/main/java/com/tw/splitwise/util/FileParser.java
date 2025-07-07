@@ -30,13 +30,13 @@ public class FileParser {
         return expenseList;
     }
 
-    public static void printExpenseSummary(Map<String, Map<String, Double>> expenseSummary) {
+    public static void printExpenseSummary(Map<String, Map<String, Double>> expenseSummary, String message) {
         StringBuilder result = new StringBuilder();
-        result.append("\n");
-        for (Map.Entry<String, Map<String, Double>> entry : expenseSummary.entrySet()) {
-            Map<String, Double> receiverSummary = entry.getValue();
-            for (var receiver : receiverSummary.entrySet()) {
-                result.append(receiver.getKey() + " pays " + entry.getKey() + " " + receiver.getValue());
+        result.append("\n" + message +"\n");
+        for (var sender : expenseSummary.entrySet()) {
+            Map<String, Double> beneficiarySummary = sender.getValue();
+            for (var beneficiary : beneficiarySummary.entrySet()) {
+                result.append(beneficiary.getKey() + " pays " + sender.getKey() + " " + beneficiary.getValue());
                 result.append("\n");
             }
         }

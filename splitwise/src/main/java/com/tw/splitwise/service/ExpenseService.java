@@ -12,6 +12,8 @@ public interface ExpenseService {
 
     Map<String, Map<String, Double>> splitAllExpenses();
 
+    Map<String, Map<String, Double>> netOffAllExpenses(Map<String, Map<String, Double>> originalSummary);
+
     Expense findById(int id);
 
     List<Expense> findAll();

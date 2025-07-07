@@ -45,6 +45,30 @@ public class ExpenseServiceImplTests {
     }
 
     @Test
+    public void shouldNetOffAllExpenses() {
+        User x = new User("XX");
+        User y = new User("YY");
+        User z = new User("ZZ");
+        User aa = new User("AB");
+
+        Expense expense1 = new Expense(x, 100.0, "Snacks", new Date(), List.of(x, y, z, aa));
+        Expense expense2 = new Expense(y, 25.0, "Snacks", new Date(), List.of(x));
+        expenseService.add(expense1);
+        expenseService.add(expense2);
+
+        Map<String, Map<String, Double>> expenseSummary = expenseService.splitAllExpenses();
+        Map<String, Map<String, Double>> netoffSummary = expenseService.netOffAllExpenses(expenseSummary);
+
+        assertNotNull(netoffSummary);
+        assertTrue(netoffSummary.containsKey("XX"));
+        Map<String, Double> receiverSummary = netoffSummary.get("XX");
+        assertEquals(2, receiverSummary.size());
+        assertNull(receiverSummary.get("YY"));
+        assertEquals(25.0, receiverSummary.get("ZZ"));
+        assertEquals(25.0, receiverSummary.get("AB"));
+    }
+
+    @Test
     public void shouldAdd() {
         User sender = new User("Vimal");
         User beneficiary = new User("Kumar");

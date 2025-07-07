@@ -27,26 +27,51 @@ public class ExpenseServiceImpl implements ExpenseService {
     public Map<String, Map<String, Double>> splitAllExpenses() {
         Map<String, Map<String, Double>> expenseSummary = new HashMap<>();
         List<Expense> expenseList = expenseDao.findAll();
+
         for (Expense expense : expenseList) {
             String senderName = expense.getSender().getName();
-
             int splitShareCount = expense.getBeneficiaries().size();
 
             for (User beneficiary : expense.getBeneficiaries()) {
                 String beneficiaryName = beneficiary.getName();
-
                 if (beneficiaryName.equals(senderName)) continue;
+
                 double amountToTransfer = expense.getTotalAmount() / splitShareCount;
 
-                Map<String, Double> beneficiarySummary = expenseSummary.getOrDefault(senderName, new HashMap<>());
-                double existingAmount = beneficiarySummary.getOrDefault(beneficiaryName, 0.0);
+                Map<String, Double> beneficiarySummary = expenseSummary.computeIfAbsent(senderName, k -> new HashMap<>());
 
-                beneficiarySummary.put(beneficiaryName, existingAmount + amountToTransfer);
-                expenseSummary.put(senderName, beneficiarySummary);
+                beneficiarySummary.put(beneficiaryName,
+                        beneficiarySummary.getOrDefault(beneficiaryName, 0.0) + amountToTransfer);
             }
         }
-
         return expenseSummary;
+    }
+
+    @Override
+    public Map<String, Map<String, Double>> netOffAllExpenses(Map<String, Map<String, Double>> originalSummary) {
+        Map<String, Map<String, Double>> netOffSummary = new HashMap<>();
+
+        for (String firstUser : originalSummary.keySet()) {
+            Map<String, Double> firstUserBeneficiaries = originalSummary.get(firstUser);
+
+            for (String secondUser : firstUserBeneficiaries.keySet()) {
+                double amountFirstToSecond = firstUserBeneficiaries.get(secondUser);
+                double amountSecondToFirst = 0.0;
+
+                if (originalSummary.containsKey(secondUser)) {
+                    Map<String, Double> secondUserBeneficiaries = originalSummary.get(secondUser);
+                    if (secondUserBeneficiaries.containsKey(firstUser)) {
+                        amountSecondToFirst = secondUserBeneficiaries.get(firstUser);
+                    }
+                }
+
+                if (amountFirstToSecond > amountSecondToFirst) {
+                    double netAmount = amountFirstToSecond - amountSecondToFirst;
+                    netOffSummary.computeIfAbsent(firstUser, k -> new HashMap<>()).put(secondUser, netAmount);
+                }
+            }
+        }
+        return netOffSummary;
     }
 
 
