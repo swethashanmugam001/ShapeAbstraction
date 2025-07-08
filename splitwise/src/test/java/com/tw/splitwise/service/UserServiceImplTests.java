@@ -32,22 +32,26 @@ public class UserServiceImplTests {
 
     @Test
     public void shouldFindAll() {
+        User user = new User("Ajay");
+        userService.add(user);
         List<User> result = userService.findAll();
-        boolean isFound = result.stream().anyMatch(x -> x.getName().equals("A"));
+        boolean isFound = result.stream().anyMatch(x -> x.getName().equals("Ajay"));
         assertFalse(result.isEmpty());
         assertTrue(isFound);
     }
 
     @Test
     public void shouldFindById() {
-        User user = new User("Priya");
+        User user = new User("Vinay");
         assertTrue(userService.add(user));
         assertNotNull(userService.findById(user.getId()));
     }
 
     @Test
     public void shouldFindByName() {
-        assertNotNull(userService.findByName("A"));
+        User user = new User("Leela");
+        userService.add(user);
+        assertNotNull(userService.findByName("Leela"));
         assertThrows(UserNotFoundException.class, () -> userService.findByName("Ramya"));
     }
 }

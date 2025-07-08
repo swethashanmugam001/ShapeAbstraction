@@ -74,7 +74,6 @@ public class ExpenseServiceImpl implements ExpenseService {
         return netOffSummary;
     }
 
-
     @Override
     public Expense findById(int id) {
         return expenseDao.findById(id);

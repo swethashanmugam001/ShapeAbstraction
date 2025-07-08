@@ -67,12 +67,12 @@ public class FileParser {
         double amount = Double.parseDouble(column[1].trim());
         String category = column[2].trim();
         List<String> beneficiaryNames = Arrays.asList(column[3].trim().split(","));
-        List<User> beneficiariesExceptSelf = beneficiaryNames.stream()
+        List<User> beneficiaries = beneficiaryNames.stream()
                 .map(String::trim)
                 .map(FileParser::getUser)
                 .collect(Collectors.toList());
 
-        return new Expense(sender, amount, category, new Date(), beneficiariesExceptSelf);
+        return new Expense(sender, amount, category, new Date(), beneficiaries);
     }
 
     private static User getUser(String name) {

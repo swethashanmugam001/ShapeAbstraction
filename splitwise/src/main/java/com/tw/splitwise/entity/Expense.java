@@ -13,6 +13,10 @@ public class Expense {
     private Date transactionDate;
     private List<User> beneficiaries;
 
+    public Expense() {
+        this.id = expenseIdCounter++;
+    }
+
     public Expense(User sender, double totalAmount, String category, Date transactionDate, List<User> beneficiaries) {
         this.id = expenseIdCounter++;
         this.sender = sender;

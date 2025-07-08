@@ -49,9 +49,9 @@ public class ExpenseServiceImplTests {
         User x = new User("XX");
         User y = new User("YY");
         User z = new User("ZZ");
-        User aa = new User("AB");
+        User ab = new User("AB");
 
-        Expense expense1 = new Expense(x, 100.0, "Snacks", new Date(), List.of(x, y, z, aa));
+        Expense expense1 = new Expense(x, 100.0, "Snacks", new Date(), List.of(x, y, z, ab));
         Expense expense2 = new Expense(y, 25.0, "Snacks", new Date(), List.of(x));
         expenseService.add(expense1);
         expenseService.add(expense2);
@@ -79,8 +79,12 @@ public class ExpenseServiceImplTests {
 
     @Test
     public void shouldFindAll() {
+        User sender = new User("Akshay");
+        User beneficiary = new User("Kumar");
+        Expense expense = new Expense(sender, 100, "Cab", new Date(), List.of(beneficiary));
+        assertTrue(expenseService.add(expense));
         List<Expense> result = expenseService.findAll();
-        boolean isFound = result.stream().anyMatch(x -> x.getSender().getName().equals("A"));
+        boolean isFound = result.stream().anyMatch(x -> x.getSender().getName().equals("Akshay"));
         assertFalse(result.isEmpty());
         assertTrue(isFound);
     }
@@ -96,14 +100,22 @@ public class ExpenseServiceImplTests {
 
     @Test
     public void shouldFindBySenderName() {
-        assertNotNull(expenseService.findBySenderName("A"));
+        User Sender = new User("Ravi");
+        User Receiver = new User("Reema");
+        Expense expense = new Expense(Sender, 25.0, "Snacks", new Date(), List.of(Receiver));
+        expenseService.add(expense);
+        assertNotNull(expenseService.findBySenderName("Ravi"));
         assertThrows(ExpenseNotFoundException.class, () -> expenseService.findBySenderName("Ramya"));
     }
 
     @Test
     public void shouldFindByBeneficiaryName() {
-        assertNotNull(expenseService.findByBeneficiaryName("A"));
-        assertThrows(ExpenseNotFoundException.class, () -> expenseService.findByBeneficiaryName("Mani"));
+        User Sender = new User("Vanitha");
+        User Receiver = new User("Rajan");
+        Expense expense = new Expense(Sender, 25.0, "Snacks", new Date(), List.of(Receiver));
+        expenseService.add(expense);
+        assertNotNull(expenseService.findByBeneficiaryName("Rajan"));
+        assertThrows(ExpenseNotFoundException.class, () -> expenseService.findByBeneficiaryName("Mithun"));
     }
 
     @Test
@@ -119,6 +131,10 @@ public class ExpenseServiceImplTests {
 
     @Test
     public void shouldFindByCategory() {
+        User Sender = new User("Joe");
+        User Receiver = new User("Alice");
+        Expense expense = new Expense(Sender, 25.0, "Snacks", new Date(), List.of(Receiver));
+        expenseService.add(expense);
         assertNotNull(expenseService.findByCategory("Snacks"));
         assertThrows(ExpenseNotFoundException.class, () -> expenseService.findByCategory("Food"));
     }
